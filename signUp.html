@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="utility.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <title>SignUp Page</title>
+</head>
+<body>
+    <section  class="signup">
+        <div class="leftsection">
+            <img src="/assets/login_img.png" alt="" >
+        </div>
+        <div class="rightsection">
+            <h3 style="font-size: 30px;" >Signup</h3>
+            <p style="font-size: 18px; color: grey;padding-top: 10px; padding-bottom: 30px;">Signup to join</p>
+
+            <form class="">
+                <div class="information">
+                    <label for="name" >Full Name<span style="color: red;" >*</span></label>
+                    <input type="text" id="name" placeholder="Full Name" style="padding-left: 10px;">
+                    <span id="nameErr" style="color: red;"></span>
+                </div>
+                <div class="information">
+                    <label for="email" >Email Id<span style="color: red;" >*</span></label>
+                    <input type="text" id="email" placeholder="xyz@gmail.com" style="padding-left: 10px;">
+                    <span id="mailErr" style="color: red;"></span>
+                </div>
+                <div class="information">
+                    <label for="password" >Password<span style="color: red;">*</span></label>
+                    <input type="password" id="password" placeholder="password" style="padding-left: 10px;">
+                    <span id="passwordErr" style="color: red;"></span>
+                </div>
+            </form>
+            <div class="termsAndConditions" > 
+                <!-- <input type="checkbox" style="margin: 0;padding: 0;">I accept <span style="color: #0948B4;">Terms & Conditions</span> -->
+                <div class="align"><input id="tickbox" type="checkbox" style="height: 15px; width: 15px;" >&nbsp;&nbsp;I Accept<span style="color: rgb(41, 41, 171);">&nbsp;Terms & Conditions</span></div> 
+                <button class="signup-btn" style="color:black ; background-color: #F3BD00;border: none ; border-radius: 20px; width: 460px; height: 45px; font-size: 20px;">Signup</button>
+                
+                <button class="btn-google" ><img src="/assets/google.png" alt="" height="25px" width="25px">&nbsp;&nbsp;Sign up with Google</button>
+                <p>Have an account? <a href="login.html">Log in ?</a></p>
+            </div>
+        </div >
+
+    </section>
+    <script src="script.js"></script>
+    
+</body>
+</html>
