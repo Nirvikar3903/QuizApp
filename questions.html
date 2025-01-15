@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="utility.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <script src="https://kit.fontawesome.com/dc4ea0a9e3.js" crossorigin="anonymous"></script>
+    <title>Questions</title>
+</head>
+<body style="background-color: whitesmoke;">
+
+    <div class="navbar" >
+        <img src="/assets/techpathshala.png" alt="techpathshala" height="25px" style="margin-top: 15px;">
+        <img src="/assets/Avatar.png" alt="profile" >
+    </div>
+
+    <div class="questionContainer">
+
+        <!-- Question numbers -->
+        <div id="questionHeading">
+            <p style="font-weight: 600; font-size: 45px; margin: 1rem 0 1rem 2rem;" ></p>
+            <!-- questionHeading.innerHTML = `<h1>Question ${questionNumber} of ${totalQuestions}</h1>`; -->
+        </div>
+
+        <!-- Progress Bar -->
+        <div class="progressBar">
+            <div class="progress" id="progress"></div>
+        </div>
+
+        <!-- Question that displays randomly -->
+        <div class="displayQuestion" style="margin-left: 2rem">
+            <div class="question-head">
+                <h2 class="questionNo"></h2>
+                <h2 class="quest"></h2>
+            </div>
+            <div class="options">
+                <!--  1options -->
+                <!--  2options -->
+                <!--  3options -->
+                <!--  4options -->
+                <!-- <div class="optionText">
+                    <input type="radio" name="options" id="option${optionIndex}" value="${option}">
+                    <label for="option${optionIndex}">${optionIndex + 1}. ${option}</label>
+                </div>` -->
+            </div>
+
+
+            <div class="navigationButtons">
+                <!-- <button id="prev" onclick="previousQuestion()">Prevoius</button>
+                <button id="next" onclick="nextQuestion()"></button> -->
+                <button id="prev" >Prevoius</button>
+                <button id="next" ></button>
+            </div>
+        </div>
+
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

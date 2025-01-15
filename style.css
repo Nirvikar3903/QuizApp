@@ -1,6 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Cabin:ital,wght@0,400..700;1,400..700&family=Figtree:ital,wght@0,300..900;1,300..900&family=Fira+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Lexend:wght@100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Outfit:wght@100..900&family=Playwrite+HR+Lijeva+Guides&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto+Condensed&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
+
 *{
     margin: 0;
     padding: 0;
+    font-family: "Inter", serif;
+
 }
 .signup{
     display: flex;
@@ -98,5 +102,91 @@ span{}
     font-size: 14px;
     padding-left: 10px;
     border-color:1px solid #8E8E93;
-
 }
+
+/* questions page */
+.progressBar{
+    width: 90%;
+    height: 12px;
+    background-color: #e0e0e0;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-left: 2rem;
+}
+
+.progress{
+    width: 20%;
+    height: 100%;
+    background-color: #F3BD00;
+    border-radius: 10px;
+    transition: width 0.4s ease;
+}
+
+
+
+
+
+
+/* Option container styling */
+.optionText {
+    margin: 16px;
+}
+
+/* Hide radio button */
+.optionText input[type="radio"] {
+    display: none;
+}
+
+/* Label default appearance */
+.optionText label {
+    display: inline-block;
+    padding: 10px 20px;
+    font-family: sans-serif, Arial;
+    font-size: 16px;
+    border-radius: 20px;
+    background-color: white;
+    border: 1px solid #ccc;
+    cursor: pointer;
+}
+
+/* Hover effect on label */
+.optionText label:hover {
+    box-shadow: 2px 2px 2px 2px rgb(192, 189, 189);
+    background-color: #f0f0f0;
+}
+
+/* Selected option appearance */
+.optionText input[type="radio"]:checked + label {
+    background-color: #E8BE21;
+    border-color: #E8BE21;
+    color: white;
+    font-weight: bold;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 20px;
+}
+
+
+.navigationButtons{
+    display: flex;
+    justify-content:space-around;
+    margin-top: 50px;
+    gap: 900px;
+}
+
+ #prev{
+    color: #8E8E93;
+    border: none;
+    font-size: 24px;
+    background-color: whitesmoke;
+    /* left: 100px; */
+
+ }
+#next{
+    color: blue;
+    border: none;
+    font-size: 24px;
+    background-color: whitesmoke;
+    position: sticky;
+  
+
+} 
