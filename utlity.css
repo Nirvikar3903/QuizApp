@@ -1,0 +1,14 @@
+.para2 {
+    text-align: center;
+    width: 25rem;
+    font-size: 0.8rem;
+    font-weight: 400;
+    margin-top: 2rem;
+}
+
+.para3 {
+    display: flex;
+    justify-content: center;
+    line-height: 3rem;
+    font-size: 0.6rem;
+}

@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded" , ()=>{
     const emailInput = document.getElementById("email");
     const passwordInput = document.getElementById("password");
     const checkBox = document.getElementById("tickbox");
-    const signupButton = document.querySelector(".signup-btn");
+    const signupButton = document.getElementById("signup-btn");
 
 
     //error msg elements
@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded" , ()=>{
 
 
     //function validating email
-    const isValid=(email)=>{
+    const isValidEmail=(email)=>{
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         return emailRegex.test(email);
     }
@@ -74,7 +74,11 @@ document.addEventListener("DOMContentLoaded" , ()=>{
             nameInput.value = "";
             emailInput.value = "";
             passwordInput.value = "";
+
+            window.location.href = "login.html";
         }
+
+       
         
     })
 });
@@ -111,7 +115,7 @@ document.addEventListener("DOMContentLoaded" ,()=>{
         if(emailInput.value.trim() === ""){
             emailErr.textContent = "Email is required."
             isValid = false;
-        }else if (!isValid(emailInput.value.trim())){
+        }else if (!isValidEmail(emailInput.value.trim())){
             emailErr.textContent = "Please enter a valid email address.";
             isValid = false;
         }
@@ -132,6 +136,7 @@ document.addEventListener("DOMContentLoaded" ,()=>{
             // check email password
             if( emailInput.value.trim() === storedEmail && passwordInput.value.trim() === storedPassword){
                 alert ("Login successful!!")
+                window.location.href = "startQuizpage.html";
             }else{
                 alert("Incorrect Email or Password .Please try again later!!!")
             }
@@ -176,8 +181,8 @@ const defaultQuestions = [
     {
         id: 4,
         question: "Which HTML tag is used to create a hyperlink?",
-        options: ["'<a>'", "'<link>'", "'<href>'", "'<hyperlink>'"],
-        answer: "<a>"
+        options: ["a", "link", "href", "<hyperlink>"],
+        answer: "a"
     },
     {
         id: 5,
@@ -224,7 +229,7 @@ const defaultQuestions = [
         question: "What is the correct CSS syntax to make all <p> elements bold?",
         options: [
             "'p {font-weight: bold;}'",
-            "'<p style='bold;'>'",
+            "'p style='bold;''",
             "'p {text-weight: bold;}'",
             "'p {font-style: bold;}'"
         ],
@@ -245,12 +250,12 @@ const defaultQuestions = [
         id: 12,
         question: "What is the correct syntax to include an external JavaScript file in HTML?",
         options: [
-            "'<script src='script.js'></script>'",
-            "'<script href='script.js'></script>'",
-            "'<js src='script.js'></js>'",
-            "'<javascript src='script.js'></javascript>'"
+            "script src='script.js'",
+            "script href='script.js'",
+            "js src='script.js",
+            "javascript src='script.js"
         ],
-        answer: "'<script src='script.js'></script>'"
+        answer: "script src='script.js'"
     },
     {
         id: 13,
@@ -363,6 +368,27 @@ const optionsContainer = document.querySelector(".options");
 const previousBtn = document.getElementById("prev");
 const nextBtn = document.getElementById("next");
 
+
+function markPreviousAnswer() {
+    // Mark the previously selected option if available
+    if (selectedAnswers[currIndex] !== undefined) {
+        const radioButtons = optionsContainer.querySelectorAll("input[type='radio']");
+        radioButtons.forEach(radioButton => {
+            if (radioButton.value === selectedAnswers[currIndex]) {
+                radioButton.checked = true;
+            }
+        });
+    }
+}
+
+// Save selected answer
+function saveSelectedAnswer() {
+    const selectedOption = document.querySelector('input[name="options"]:checked');
+    if (selectedOption) {
+        selectedAnswers[currIndex] = selectedOption.value;
+    }  
+}
+
 // Display question
 function displayQuestion() {
     const currentQuestion = randomQuestion[currIndex];
@@ -379,19 +405,22 @@ function displayQuestion() {
     </p>`;
 
     // Update question number and text
-    questionNumberElement.textContent = `${currIndex + 1}`;
+    questionNumberElement.textContent = `${currIndex + 1}.`;
     questionElement.textContent = currentQuestion.question;
 
     // Display options
     optionsContainer.innerHTML = currentQuestion.options
         .map(
             (option, optionIndex) =>
-                `<div class="optionText">
+                `<div class="optionText" >
                     <input type="radio" name="options" id="option${optionIndex}" value="${option}">
                     <label for="option${optionIndex}">${optionIndex + 1}. ${option}</label>
                 </div>`
         )
         .join("");
+
+    // Mark previously selected answer
+    markPreviousAnswer();
 
     // Update progress bar
     updateProgressBar();
@@ -409,6 +438,7 @@ function updateProgressBar() {
 
 // Event Listeners
 previousBtn.addEventListener("click", () => {
+    
     saveSelectedAnswer();
     if (currIndex > 0) {
         currIndex--;
@@ -417,23 +447,32 @@ previousBtn.addEventListener("click", () => {
 });
 
 nextBtn.addEventListener("click", () => {
+    const selectedOption = document.querySelector('input[name="options"]:checked');
+
+    if (!selectedOption) {
+        alert("Please select an answer before moving to the next question.");
+        return;
+    }
     saveSelectedAnswer();
+
+    // Check if the answer is correct
+    const currentQuestion = randomQuestion[currIndex];
+    if (selectedAnswers[currIndex] === currentQuestion.answer) {
+        score++;
+    }
+
+
     if (currIndex < totalQuestions - 1) {
         currIndex++;
         displayQuestion();
     } else {
         alert("Quiz Submitted!");
         console.log("Selected Answers: ", selectedAnswers);
+        console.log("Score: ", score); // Display the score
     }
 });
 
-// Save selected answer
-function saveSelectedAnswer() {
-    const selectedOption = document.querySelector('input[name="options"]:checked');
-    if (selectedOption) {
-        selectedAnswers[currIndex] = selectedOption.value;
-    }  
-}
+
 
 // Initialize quiz
 displayQuestion();
