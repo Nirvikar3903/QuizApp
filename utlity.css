@@ -12,3 +12,14 @@
     line-height: 3rem;
     font-size: 0.6rem;
 }
+
+.dis-row-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.dis-row-around {
+    display: flex;
+    justify-content: space-around;
+}

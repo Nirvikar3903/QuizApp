@@ -155,7 +155,7 @@ span{}
 
 /* Selected option appearance */
 .optionText input[type="radio"]:checked + label {
-    background-color: #E8BE21;
+    background-color: #F3BD00;
     border-color: #E8BE21;
     color: white;
     font-weight: bold;
@@ -188,3 +188,73 @@ span{}
   
 
 } 
+
+/* ranking page */
+.rank{
+    /* background-color: aqua;  */
+    padding-top :15px ;
+    display: flex;
+    flex-direction: column; 
+    align-items: center;
+}
+.score-display{
+    position: relative;
+    bottom: 290px; 
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+
+}
+.rankHolders{
+    display: flex;
+    justify-content: center;
+    position: relative;
+    padding-top: 20px;
+}
+.top-three{
+    gap: 20px; 
+}
+.top-three h2{
+    text-align: center;
+    font-size: 32px;
+}
+.ranking-score {
+    background-color: #FFFF;
+    height:400px;
+    width: 100%;
+    position:absolute;
+    top:600px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    clip-path: ellipse(100% 80% at 50% 100%);
+    z-index: 1;
+    box-sizing: border-box;
+    padding-top:170px;
+    padding-left:30px;
+    padding-right: 30px;
+    overflow-y: auto;
+    scrollbar-width: none;
+
+
+}
+.rank-item {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 30px;
+    height: 50px;
+    font-size: 20px;
+    padding:0 25px;
+    font-weight: bold;
+}
+#currentUser{
+    background-color: #FBF1CE;
+}
+
+.rank-item span{
+margin-left: 20px;
+}

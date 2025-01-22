@@ -181,8 +181,8 @@ const defaultQuestions = [
     {
         id: 4,
         question: "Which HTML tag is used to create a hyperlink?",
-        options: ["a", "link", "href", "<hyperlink>"],
-        answer: "a"
+        options: ["'<a>'", "'<link>'", "'<href>'", "'<hyperlink>'"],
+        answer: "<a>"
     },
     {
         id: 5,
@@ -229,7 +229,7 @@ const defaultQuestions = [
         question: "What is the correct CSS syntax to make all <p> elements bold?",
         options: [
             "'p {font-weight: bold;}'",
-            "'p style='bold;''",
+            "'<p style='bold;'>'",
             "'p {text-weight: bold;}'",
             "'p {font-style: bold;}'"
         ],
@@ -250,12 +250,12 @@ const defaultQuestions = [
         id: 12,
         question: "What is the correct syntax to include an external JavaScript file in HTML?",
         options: [
-            "script src='script.js'",
-            "script href='script.js'",
-            "js src='script.js",
-            "javascript src='script.js"
+            "'<script src='script.js'></script>'",
+            "'<script href='script.js'></script>'",
+            "'<js src='script.js'></js>'",
+            "'<javascript src='script.js'></javascript>'"
         ],
-        answer: "script src='script.js'"
+        answer: "'<script src='script.js'></script>'"
     },
     {
         id: 13,
@@ -446,33 +446,89 @@ previousBtn.addEventListener("click", () => {
     }
 });
 
+// nextBtn.addEventListener("click", () => {
+//     let score = 0;
+//     const selectedOption = document.querySelector('input[name="options"]:checked');
+
+//     // if (!selectedOption) {
+//     //     alert("Please select an answer before moving to the next question.");
+//     //     return;
+//     // }
+//     saveSelectedAnswer();
+
+//     // Check if the answer is correct
+//     const currentQuestion = randomQuestion[currIndex];
+//     const selectedAnswer = selectedOption.value.trim(); // Trim to avoid whitespace issues
+//     const correctAnswer = currentQuestion.answer.trim();
+
+    
+//     if (selectedAnswers[currIndex] === currentQuestion.answer) {
+//         score = score+10;
+//     }
+//     currIndex++;
+
+
+//     if (currIndex < totalQuestions - 1) {
+//         currIndex++;
+//         displayQuestion();
+//     } else {
+//         let score = 0;
+        
+//         alert("Quiz Submitted!");
+//         console.log("Selected Answers: ", selectedAnswers);
+//         console.log("Score: ", score); // Display the score
+//     }
+// });
+
+
+
+// Initialize quiz
+
 nextBtn.addEventListener("click", () => {
+    // let score = 0;
     const selectedOption = document.querySelector('input[name="options"]:checked');
 
+    // Check if an answer is selected
     if (!selectedOption) {
         alert("Please select an answer before moving to the next question.");
         return;
     }
+
     saveSelectedAnswer();
 
-    // Check if the answer is correct
-    const currentQuestion = randomQuestion[currIndex];
-    if (selectedAnswers[currIndex] === currentQuestion.answer) {
-        score++;
-    }
+    // Check if the selected answer is correct
+    // const currentQuestion = randomQuestion[currIndex];
+    // const selectedAnswer = selectedOption.value.trim(); // Trim to avoid whitespace issues
+    // const correctAnswer = currentQuestion.answer.trim();
 
+    // if (selectedAnswer === correctAnswer) {
+    //     score = score + 10; // Increment score if the answer is correct
+    // }
 
+    // Move to next question or submit the quiz
     if (currIndex < totalQuestions - 1) {
         currIndex++;
         displayQuestion();
     } else {
         alert("Quiz Submitted!");
+        
+        // Calculate and display the total score after the quiz
+        let finalScore = 0;
+        randomQuestion.forEach((question, index) => {
+            // if (selectedAnswer === correctAnswer) {
+            if (selectedAnswers[index] === question.answer ) {
+                finalScore = finalScore +10;
+            }
+        });
+
         console.log("Selected Answers: ", selectedAnswers);
-        console.log("Score: ", score); // Display the score
+        console.log("Final Score: ", finalScore); // Display the score
+        alert("Your final score is: " + finalScore);
     }
 });
 
 
 
-// Initialize quiz
+
+
 displayQuestion();
