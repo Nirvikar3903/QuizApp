@@ -4,16 +4,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="utility.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <script src="https://kit.fontawesome.com/dc4ea0a9e3.js" crossorigin="anonymous"></script>
     <title>Questions</title>
 </head>
 <body style="background-color: whitesmoke;">
 
-    <div class="navbar" >
+    <!-- <div class="navbar" >
         <img src="/assets/techpathshala.png" alt="techpathshala" height="25px" style="margin-top: 15px;">
         <img src="/assets/Avatar.png" alt="profile" >
+    </div> -->
+    <div class="navbar" >
+        <img src="/assets/techpathshala.png" alt="techpathshala" height="25px" style="margin-top: 15px;">
+        <div class="components">
+            <p href="">Edit Quizzes</p>
+            <p href="">All Quizes</p>
+            <div id="profile-container" style="position: relative;">
+                <img src="/assets/Avatar.png" alt="profile" id="profile-img" style="cursor: pointer;">
+                <select name="menu" id="menu" style="display: none; position: absolute; top: 40px; left: 0;">
+                    <option value="profile">Profile</option>
+                    <option value="logout">Logout</option>
+                </select>
+            </div>
+        </div>
     </div>
 
     <div class="questionContainer">
@@ -52,11 +65,12 @@
                 <!-- <button id="prev" onclick="previousQuestion()">Prevoius</button>
                 <button id="next" onclick="nextQuestion()"></button> -->
                 <button id="prev" >Prevoius</button>
-                <button id="next" ></button>
+                <button id="next" >Submit & Continue -></button>
             </div>
         </div>
 
     </div>
     <script src="script.js"></script>
+    <!-- <script src="script2.js"></script> -->
 </body>
 </html>

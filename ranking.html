@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="utility.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <title>Ranking</title>
 </head>
@@ -30,17 +29,17 @@
         <div class="top-three" style="display: flex ;justify-content: center;">
             <div class="user-rank-second" style="margin-top: 120px;">
                 <h2>#2</h2><img src="/assets/rank_image1.png" alt="" srcset="">
-                <div class="score-display"><h2>Score</h2><p id="second">844</p></div>
+                <div class="score-display"><h2 id="secondName"></h2><p id="second"></p></div>
             </div>
     
             <div class="user-rank-first" style="margin-top: 0;">
                 <img src="/assets/rank_image2.png" alt="" srcset="">
-                <div class="score-display"><h2>Score</h2><p id="first">844</p></div>
+                <div class="score-display"><h2 id="firstName"></h2><p id="first"></p></div>
                 
             </div>
             <div class="user-rank-third" style="margin-top: 170px;">
                 <h2>#3</h2><img src="/assets/rank_image3.png" alt="" srcset="">
-                <div class="score-display"><h2>Score</h2><p id="third">844</p></div>
+                <div class="score-display"><h2 id="thirdName"></h2><p id="third"></p></div>
                 
             </div>
         </div>
@@ -51,42 +50,37 @@
     <div class="rankList">
         <div class="ranking-score"  >
 
-            <!-- 1 -->
+            <!-- logged in user -->
             <div class="rank-item  " id="currentUser">
                <div style="display: flex;justify-content: space-evenly;" >
-                   <p id="currentUserRank">#4</p> <span id="currentUserName" >nirvikar</span>
+                   <p class="currentUserRank"></p> <span class="currentUserName" ></span>
                </div> 
-                <p id="currentUserScore">500</p>
-            </div>
-            <!-- 2 -->
-            <div class="rank-item " >
-               <div style="display: flex;justify-content: space-evenly;" >
-                   <p id="currentUserRank"></p> <span id="currentUserName" ></span>
-               </div> 
-                <p id="currentUserScore" class="topScores"></p>
-            </div>
-            <!-- 3 -->
-            <div class="rank-item  " >
-               <div style="display: flex;justify-content: space-evenly;" >
-                   <p id="currentUserRank"></p> <span id="currentUserName" ></span>
-               </div> 
-                <p id="currentUserScore" class="topScores"></p>
+                <p class="currentUserScore"></p>
             </div>
             <!-- 4 -->
+            <div class="rank-item " >
+               <div style="display: flex;justify-content: space-evenly;" >
+                   <p class="currentUserRank"></p> <span class="currentUserName" ></span>
+               </div> 
+                <p class="currentUserScore" ></p>
+            </div>
+            <!-- 5 -->
+            <!-- <div class="rank-item  " >
+               <div style="display: flex;justify-content: space-evenly;" >
+                   <p class="currentUserRank"></p> <span class="currentUserName" ></span>
+               </div> 
+                <p class="currentUserScore" ></p>
+            </div> -->
+            <!-- 4
             <div class="rank-item  " >
                <div style="display: flex;justify-content: space-evenly;" >
                    <p id="currentUserRank"></p> <span id="currentUserName" ></span>
                </div> 
                 <p id="currentUserScore" class="topScores"></p>
-            </div>
+            </div> -->
         </div>
 
     </div>
-        
-
-
-
-
-    
+    <script src="script.js"></script>
 </body>
 </html>

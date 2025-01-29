@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="utility.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <title>Dashboard</title>
 </head>
@@ -15,9 +14,18 @@
         <div class="components">
             <p href="">Edit Quizzes</p>
             <p href="">All Quizes</p>
-            <img src="/assets/Avatar.png" alt="profile" >
+            <div id="profile-container" style="position: relative;">
+                <img src="/assets/Avatar.png" alt="profile" id="profile-img" style="cursor: pointer;">
+                <select name="menu" id="menu" style="display: none; position: absolute; top: 40px; left: 0;">
+                    <option value="profile">Profile</option>
+                    <option value="logout">Logout</option>
+                </select>
+            </div>
         </div>
     </div>
+    
+    
+    
 
     <div class="disclaimer">
         <h1>Let's start the Quiz</h1>
@@ -50,5 +58,6 @@
 
         <button style="color:black ; background-color: #F3BD00;border: none ; border-radius: 20px;padding: 10px; width: 350px; font-size: 16px;">Start Quiz</button>
     </div>
+    <script src="script.js"></script>
 </body>
 </html>
