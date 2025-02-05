@@ -9,23 +9,39 @@
 </head>
 <body style="background-color: whitesmoke;">
     
-    <div class="navbar" >
+    <!-- <div class="navbar" >
         <img src="/assets/techpathshala.png" alt="techpathshala" height="25px" style="margin-top: 15px;">
         <div class="components">
             <p href="">Edit Quizzes</p>
             <p href="">All Quizes</p>
             <div id="profile-container" style="position: relative;">
-                <img src="/assets/Avatar.png" alt="profile" id="profile-img" style="cursor: pointer;">
+                <img src="/assets/Avatar.png" alt="profile" id="profile-img" style="cursor: pointer;" onclick="logout()">
                 <select name="menu" id="menu" style="display: none; position: absolute; top: 40px; left: 0;">
                     <option value="profile">Profile</option>
                     <option value="logout">Logout</option>
                 </select>
             </div>
         </div>
-    </div>
+    </div> -->
+    <div class="navbar">
+        <img src="/assets/techpathshala.png" alt="techpathshala" height="25px" style="margin-top: 15px;">
+        <div class="components">
+          <a style="text-decoration: none;" href="#">Edit Quizzes</a> <!-- Replace <p> with <a> for links -->
+          <a style="text-decoration: none;" href="#">All Quizzes</a> <!-- Replace <p> with <a> for links -->
     
+          <div id="profile-container" style="position: relative;">
+            <img src="/assets/Avatar.png" alt="profile" id="profile-img" style="cursor: pointer;">
+            
+            <!-- Dropdown menu for profile options (Profile and Logout) -->
+            <select id="menu" name="menu">
+              <option value="profile">Profile</option>
+              <option value="logout">Logout</option>
+            </select>
+          </div>
+        </div>
+      </div>
     
-    
+
 
     <div class="disclaimer">
         <h1>Let's start the Quiz</h1>
@@ -56,7 +72,7 @@
             </div>
         </div>
 
-        <button style="color:black ; background-color: #F3BD00;border: none ; border-radius: 20px;padding: 10px; width: 350px; font-size: 16px;">Start Quiz</button>
+        <button onclick="startQuiz()" style="color:black ; background-color: #F3BD00;border: none ; border-radius: 20px;padding: 10px; width: 350px; font-size: 16px;">Start Quiz</button>
     </div>
     <script src="script.js"></script>
 </body>

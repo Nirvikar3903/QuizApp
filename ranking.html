@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,80 +8,103 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <title>Ranking</title>
 </head>
+
 <body style="background-color: whitesmoke;">
 
+    <div class="navbar">
+    <img src="/assets/techpathshala.png" alt="techpathshala" height="25px" style="margin-top: 15px;">
+    <div class="components">
+      <a style="text-decoration: none;" href="#">Edit Quizzes</a> 
+      <a style="text-decoration: none;" href="#">All Quizzes</a> 
 
-    <div class="navbar" >
-        <img src="/assets/techpathshala.png" alt="techpathshala" height="25px" style="margin-top: 15px;">
-        <div class="components">
-            <p href="">Edit Quizzes</p>
-            <p href="">All Quizes</p>
-            <img src="/assets/Avatar.png" alt="profile" >
-        </div>
+      <div id="profile-container" style="position: relative;">
+        <img src="/assets/Avatar.png" alt="profile" id="profile-img" style="cursor: pointer;">
+        
+        <!-- Dropdown menu for profile options (Profile and Logout) -->
+        <select id="menu" name="menu">
+          <option value="profile">Profile</option>
+          <option value="logout">Logout</option>
+        </select>
+      </div>
     </div>
+  </div>
 
     <!-- player ranking -->
-    <div class="rank" >
-        <h1 id="rankDisplay" style="font-size: 40px; padding-top: 15px;">Wow your rank is 1st</h1>
-        <p id="rankScore"  style="color: grey;padding-top: 10px; font-size: 20px;">This is your rank score </p>
+    <div class="rank">
+        <h1 id="rank-display" style="font-size: 40px; padding-top: 15px;">Wow your rank is 1st</h1>
+        <p id="rank-score" style="color: grey;padding-top: 10px; font-size: 20px;">This is your rank score </p>
     </div>
 
     <div class="rankHolders">
         <div class="top-three" style="display: flex ;justify-content: center;">
-            <div class="user-rank-second" style="margin-top: 120px;">
+            <div class="user-rank-second" style="margin-top: 140px;">
                 <h2>#2</h2><img src="/assets/rank_image1.png" alt="" srcset="">
-                <div class="score-display"><h2 id="secondName"></h2><p id="second"></p></div>
+                <div class="score-display">
+                    <h2 id="secondName"></h2>
+                    <p id="second"></p>
+                </div>
             </div>
-    
-            <div class="user-rank-first" style="margin-top: 0;">
+
+            <div class="user-rank-first" style="margin-top:60px;">
                 <img src="/assets/rank_image2.png" alt="" srcset="">
-                <div class="score-display"><h2 id="firstName"></h2><p id="first"></p></div>
-                
+                <div class="score-display">
+                    <h2 id="firstName"></h2>
+                    <p id="first"></p>
+                </div>
+
             </div>
-            <div class="user-rank-third" style="margin-top: 170px;">
+            <div class="user-rank-third" style="margin-top: 190px;">
                 <h2>#3</h2><img src="/assets/rank_image3.png" alt="" srcset="">
-                <div class="score-display"><h2 id="thirdName"></h2><p id="third"></p></div>
-                
+                <div class="score-display">
+                    <h2 id="thirdName"></h2>
+                    <p id="third"></p>
+                </div>
+
             </div>
         </div>
     </div>
-        
+
     </div>
-
-    <div class="rankList">
-        <div class="ranking-score"  >
-
-            <!-- logged in user -->
-            <div class="rank-item  " id="currentUser">
-               <div style="display: flex;justify-content: space-evenly;" >
-                   <p class="currentUserRank"></p> <span class="currentUserName" ></span>
-               </div> 
-                <p class="currentUserScore"></p>
+<!-- ellipse -->
+    <div class="ranking-score">
+        <!-- logged in user coloured div-->
+        <div class="logged-in-user">
+            <div class="current-user">
+                <div class="current-user-rank"></div>
+                <div class="current-user-name"></div>
             </div>
-            <!-- 4 -->
-            <div class="rank-item " >
-               <div style="display: flex;justify-content: space-evenly;" >
-                   <p class="currentUserRank"></p> <span class="currentUserName" ></span>
-               </div> 
-                <p class="currentUserScore" ></p>
-            </div>
-            <!-- 5 -->
-            <!-- <div class="rank-item  " >
-               <div style="display: flex;justify-content: space-evenly;" >
-                   <p class="currentUserRank"></p> <span class="currentUserName" ></span>
-               </div> 
+            <p class="current-user-score"></p>
+        </div>
+
+
+
+        <div class="rank-list"></div>
+        <!-- 5 -->
+        <!-- <div class="rank-item  " >
+                <div style="display: flex;justify-content: space-evenly;" >
+                    <p class="currentUserRank"></p> <span class="currentUserName" ></span>
+                </div> 
                 <p class="currentUserScore" ></p>
             </div> -->
-            <!-- 4
+        <!-- 4
             <div class="rank-item  " >
-               <div style="display: flex;justify-content: space-evenly;" >
-                   <p id="currentUserRank"></p> <span id="currentUserName" ></span>
-               </div> 
+                <div style="display: flex;justify-content: space-evenly;" >
+                    <p id="currentUserRank"></p> <span id="currentUserName" ></span>
+                </div> 
                 <p id="currentUserScore" class="topScores"></p>
             </div> -->
-        </div>
-
+            <!-- <div class="rank-items">
+                <div class="other-user">
+                    <div class="other-user-rank">#${userTests[existingQuizIndex].rank}</div>
+                    <div class="other-user-name">${userTests[existingQuizIndex].username}</div>
+                </div>
+                <div class="other-user-score">${userTests[existingQuizIndex].score}</div>
+            </div> -->
     </div>
+    
+    
+
     <script src="script.js"></script>
 </body>
+
 </html>

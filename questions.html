@@ -10,11 +10,8 @@
 </head>
 <body style="background-color: whitesmoke;">
 
+    
     <!-- <div class="navbar" >
-        <img src="/assets/techpathshala.png" alt="techpathshala" height="25px" style="margin-top: 15px;">
-        <img src="/assets/Avatar.png" alt="profile" >
-    </div> -->
-    <div class="navbar" >
         <img src="/assets/techpathshala.png" alt="techpathshala" height="25px" style="margin-top: 15px;">
         <div class="components">
             <p href="">Edit Quizzes</p>
@@ -27,7 +24,24 @@
                 </select>
             </div>
         </div>
-    </div>
+    </div> -->
+    <div class="navbar">
+        <img src="/assets/techpathshala.png" alt="techpathshala" height="25px" style="margin-top: 15px;">
+        <div class="components">
+          <a style="text-decoration: none;" href="#">Edit Quizzes</a> <!-- Replace <p> with <a> for links -->
+          <a style="text-decoration: none;" href="#">All Quizzes</a> <!-- Replace <p> with <a> for links -->
+    
+          <div id="profile-container" style="position: relative;">
+            <img src="/assets/Avatar.png" alt="profile" id="profile-img" style="cursor: pointer;">
+            
+            <!-- Dropdown menu for profile options (Profile and Logout) -->
+            <select id="menu" name="menu">
+              <option value="profile">Profile</option>
+              <option value="logout">Logout</option>
+            </select>
+          </div>
+        </div>
+      </div>
 
     <div class="questionContainer">
 
@@ -64,8 +78,8 @@
             <div class="navigationButtons">
                 <!-- <button id="prev" onclick="previousQuestion()">Prevoius</button>
                 <button id="next" onclick="nextQuestion()"></button> -->
-                <button id="prev" >Prevoius</button>
-                <button id="next" >Submit & Continue -></button>
+                <button id="prev" onclick="prevBtn()" > &lt-Prevoius</button>
+                <button id="next" onclick="nextQuestion()">Submit & Continue -></button>
             </div>
         </div>
 

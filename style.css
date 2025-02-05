@@ -4,7 +4,6 @@
     margin: 0;
     padding: 0;
     font-family: "Inter", serif;
-
 }
 .signup{
     display: flex;
@@ -56,6 +55,28 @@ span{}
 .align{
     display: flex;
 }
+#menu {
+    display: none; /* Initially hidden */
+    position: absolute;
+    top: 40px; /* Adjust to your design */
+    /* left: 50px; */
+    background-color: white;
+    border: 1px solid #ccc;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    border-radius: 5px;
+    width: 100px; /* Adjust width to your liking */
+  }
+
+  #menu option {
+    padding: 30px;
+    text-align: left;
+    cursor: pointer;
+  }
+
+  #menu option:hover {
+    background-color: #f0f0f0;
+  }
 
 /* dashboard */
 .navbar{
@@ -107,7 +128,7 @@ span{}
 /* questions page */
 .progressBar{
     width: 90%;
-    height: 12px;
+    height: 18px;
     background-color: #e0e0e0;
     border-radius: 10px;
     overflow: hidden;
@@ -138,12 +159,12 @@ span{}
 /* Label default appearance */
 .optionText label {
     display: inline-block;
-    padding: 10px 20px;
+    padding: 12px 20px;
     font-family: sans-serif, Arial;
     font-size: 22px;
     border-radius: 20px;
-    background-color: white;
-    border: 1px solid #ccc;
+    /* background-color: white; */
+    /* border: 1px solid #ccc; */
     cursor: pointer;
 }
 
@@ -157,8 +178,8 @@ span{}
 .optionText input[type="radio"]:checked + label {
     background-color: #F3BD00;
     border-color: #E8BE21;
-    color: white;
-    font-weight: bold;
+    /* color: white; */
+    font-weight: 600;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
     border-radius: 20px;
 }
@@ -174,7 +195,7 @@ span{}
  #prev{
     color: #8E8E93;
     border: none;
-    font-size: 24px;
+    font-size: 28px;
     background-color: whitesmoke;
     /* left: 100px; */
 
@@ -182,7 +203,7 @@ span{}
 #next{
     color: blue;
     border: none;
-    font-size: 24px;
+    font-size: 28px;
     background-color: whitesmoke;
     position: sticky;
   
@@ -220,12 +241,14 @@ span{}
     text-align: center;
     font-size: 32px;
 }
-.ranking-score {
+
+
+.ranking-score{
     background-color: #FFFF;
-    height:400px;
+    height:450px;
     width: 100%;
     position:absolute;
-    top:600px;
+    top:650px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
     clip-path: ellipse(100% 80% at 50% 100%);
     z-index: 1;
@@ -235,26 +258,44 @@ span{}
     padding-right: 30px;
     overflow-y: auto;
     scrollbar-width: none;
-
-
 }
-.rank-item {
-    background-color: white;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 30px;
-    height: 50px;
-    font-size: 20px;
-    padding:0 25px;
-    font-weight: bold;
-}
-#currentUser{
+.logged-in-user{
     background-color: #FBF1CE;
+    display: none;
+    font-size: 20px;
+    color: #000;
+    gap:10px;
+    justify-content: space-between;
+    height: 55px;
+    border-radius: 8px; 
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    box-sizing: border-box;
+    padding: 20px;
+    align-items: center;
+    margin-bottom: 20px;
 }
 
-.rank-item span{
-margin-left: 20px;
+
+.rank-items{
+    display: flex;
+    /* flex-direction: column; */
+    font-size: 20px;
+    color: #000;
+    gap:10px;
+    justify-content: space-between;
+    height: 55px;
+    border-radius: 8px; 
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    box-sizing: border-box;
+    padding: 20px;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.current-user,.other-user{
+    display: flex;
+    gap:20px;
+}
+.current-user-rank,.other-user-rank, .current-user-score, .other-user-score{
+    font-weight: bold;
 }
