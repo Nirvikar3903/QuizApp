@@ -1,106 +1,3 @@
-// document.addEventListener("DOMContentLoaded", () => {
-//   const nameInput = document.getElementById("name");
-//   const emailInput = document.getElementById("email");
-//   const passwordInput = document.getElementById("password");
-//   const checkBox = document.getElementById("tickbox");
-//   const signupButton = document.getElementById("signup-btn");
-
-//   //error msg elements
-//   const nameErr = document.getElementById("name-err");
-//   const emailErr = document.getElementById("email-err");
-//   const passwordErr = document.getElementById("password-err");
-
-//   //function validating email
-//   const isValidEmail = (email) => {
-//     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-//     return emailRegex.test(email);
-//   };
-
-//   // Function to validate password (contains one uppercase letter and one @ special character)
-//   const isValidPassword = (password) => {
-//     const uppercaseRegex = /[A-Z]/; // at least one uppercase letter
-//     const specialCharRegex = /[@]/; // at least one @ special character
-//     return uppercaseRegex.test(password) && specialCharRegex.test(password);
-//   };
-
-//   window.signup = function () {
-
-//     // clearing errors
-//     nameErr.textContent = "";
-//     emailErr.textContent = "";
-//     passwordErr.textContent = "";
-
-//     let isValid = true;
-
-
-
-//     // validate name
-//     if (nameInput.value.trim() === "") {
-//       nameErr.textContent = "Full name is required.";
-//       isValid = false;
-//     }
-
-//     // validate email
-//     if (emailInput.value.trim() === "") {
-//       emailErr.textContent = "Email is required";
-//       isValid = false;
-//     } else if (!isValidEmail(emailInput.value.trim())) {
-//       emailErr.textContent = "Please enter a valid email with @ !!";
-//       isValid = false;
-//     }
-
-//     // validate password
-//     if (passwordInput.value.trim() === "") {
-//       passwordErr.textContent = "Password is required";
-//       isValid = false;
-//     } else if (passwordInput.value.length < 6) {
-//       passwordErr.textContent = "Password must be at least 6 characters";
-//       isValid = false;
-//     } else if (!isValidPassword(passwordInput.value.trim())) {
-//       passwordErr.textContent = "Password must contain atleast one(uppercase letter & special character)";
-//       isValid = false;
-//     }
-
-//     if (!checkBox.checked) {
-//       alert("You must accept the terms and conditions to sign up.");
-//       isValid = false;
-//     }
-//     if (isValid) {
-//       // stored in key-value pair
-//       let users = JSON.parse(localStorage.getItem("users")) || [];
-
-//       const isEmailTaken = users.some(
-//         (user) => user.email === emailInput.value.trim()
-//       );
-
-//       if (isEmailTaken) {
-//         alert("This email is already taken. Please enter another email.");
-//       } else {
-//         const newUser = {
-//           username: nameInput.value.trim(),
-//           email: emailInput.value.trim(),
-//           password: passwordInput.value.trim(),
-//         };
-
-//         users.push(newUser);
-
-//         // save it into localStorage
-//         localStorage.setItem("users", JSON.stringify(users));
-
-//         alert("Signup successful!!!");
-
-//         // clear the form
-//         nameInput.value = "";
-//         emailInput.value = "";
-//         passwordInput.value = "";
-
-//         // redirect to login page
-//         window.location.href = "login.html";
-//       }
-//     }
-//   };
-// });
-
 document.addEventListener("DOMContentLoaded", () => {
   const nameInput = document.getElementById("name");
   const emailInput = document.getElementById("email");
@@ -197,7 +94,7 @@ document.addEventListener("DOMContentLoaded", () => {
         passwordInput.value = "";
 
         // Redirect to login page
-        window.location.href = "login.html";
+        window.location.href = "index.html";
       }
     }
   };
@@ -273,30 +170,6 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 
-
-// document.addEventListener("DOMContentLoaded", function () {
-//   const menu = document.getElementById("menu");
-//   if (menu) {
-//     menu.addEventListener("change", function () {
-//       const selectedOption = this.value;
-//       if (selectedOption === "logout") {
-//         logout();
-//       } else if (selectedOption === "profile") {
-//         alert("Navigate to Profile Page");
-//         // Add your profile navigation logic here
-//       }
-//     });
-//   }
-// });
-
-// function logout() {
-//   // Remove loggedInUser from localStorage
-//   localStorage.removeItem("loggedInUser");
-
-//   // Redirect to login page
-//   alert("You have successfully logged out.");
-//   window.location.href = "login.html";
-// }
 document.addEventListener("DOMContentLoaded", function () {
   const profileImg = document.getElementById("profile-img");
   const menu = document.getElementById("menu");
@@ -336,7 +209,7 @@ function logout() {
 
   // Redirect to login page
   alert("You have successfully logged out.");
-  window.location.href = "login.html";
+  window.location.href = "index.html";
 }
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -600,11 +473,6 @@ if (!storedQuestions || storedQuestions.length === 0) {
   console.log("Questions loaded successfully.");
 }
 
-// Here's a summary of changes made function by function:
-// displayQuestion: Updated to render options using the new format (option.id for the value and option.value for the display text).
-// saveSelectedAnswer: Adjusted to save the id of the selected option instead of the full value.
-// markPreviousAnswer: Updated to mark the option with the matching id as checked when revisiting a question.
-// randomQuestion and selectedAnswers processing: Adapted to compare selectedAnswers against question.answer using their id values instead of strings.
 
 // Variables for quiz
 let currIndex = 0;
@@ -720,7 +588,7 @@ function displayQuestion() {
 
   previousBtn.style.visibility = currIndex > 0 ? "visible" : "hidden"; // Show or hide the previous button
   nextBtn.textContent =
-    currIndex === totalQuestions - 1 ? "Submit Quiz" : "Submit & Continue->";
+    currIndex === totalQuestions - 1 ? "Submit Quiz" : "next ->";
 }
 function updateProgressBar() {
   const progressWidth = ((currIndex + 1) / totalQuestions) * 100;
@@ -771,31 +639,69 @@ function nextQuestion() {
     console.log("Final Score: ", finalScore); // Display the score
     alert("Your final score is: " + finalScore);
 
-    const userTestData = {
-      username: loggedInUser.username,
-      email: loggedInUser.email,
-      score: finalScore,
-      questionsAnswered: randomQuestion.map((question, index) => ({
-        question: question.question,
-        selectedAnswer: randomQuestion[index].options.find(
-          (option) => option.id === selectedAnswer[index]
-        )?.value,
-        correctAnswer: question.options[question.answer - 1]?.id,
-      })),
-    };
 
-    // Store the user test data in localStorage
+
+
+
+
     let userTests = JSON.parse(localStorage.getItem("userTests")) || [];
-    userTests.push(userTestData);
 
+    // Check if the user has given tests before
+    let existingUser = userTests.find(user => user.email === loggedInUser.email);
+    
+    if (existingUser) {
+      // User exists, increment the number of tests
+      existingUser.noOfTests += 1;
+      
+      // Add the new test data to their existing test history
+      existingUser.tests.push({
+        score: finalScore,
+        date: new Date().toLocaleString(),
+        questionsAnswered: randomQuestion.map((question, index) => ({
+          question: question.question,
+          selectedAnswer: selectedAnswer[index],  // Store selected answer ID
+          correctAnswer: question.answer,         // Store correct answer ID
+          options: question.options.reduce((acc, option) => {
+            acc[option.id] = option.value;        // Store options as key-value
+            return acc;
+          }, {})
+        }))
+      });
+    } else {
+      // First test for this user, create new user entry
+      const userTestData = {
+        username: loggedInUser.username,
+        email: loggedInUser.email,
+        noOfTests: 1,
+        tests: [
+          {
+            score: finalScore,
+            date: new Date().toLocaleString(),
+            questionsAnswered: randomQuestion.map((question, index) => ({
+              question: question.question,
+              selectedAnswer: selectedAnswer[index],
+              correctAnswer: question.answer,
+              options: question.options.reduce((acc, option) => {
+                acc[option.id] = option.value;
+                return acc;
+              }, {})
+            }))
+          }
+        ]
+      };
+      
+      // Add new user to userTests
+      userTests.push(userTestData);
+    }
+    
+    // Save back to localStorage
     localStorage.setItem("userTests", JSON.stringify(userTests));
-
-    window.location.href = "ranking.html";
+    
+    // Redirect after saving data
+    window.location.href = "ranking.html";    
   }
 
-  //calculate an display total score after quiz is submitted
 }
-// displayQuestion();
 
 document.addEventListener("DOMContentLoaded", () => {
   if (window.location.pathname === "/ranking.html") {
@@ -803,19 +709,39 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 
+// function sortAndRank() {
+
+//   let quizData = JSON.parse(localStorage.getItem("userTests")) || [];
+//   quizData.sort((a, b) => b.score - a.score);
+
+//   let rank = 1;
+//   const rankedQuizData = quizData.map((item, index) => {
+//     return { ...item, rank: index + 1 };
+//   });
+
+//   // Save the ranked quiz data back into localStorage
+//   localStorage.setItem("userTests", JSON.stringify(rankedQuizData));
+//   return rankedQuizData;
+// }
 function sortAndRank() {
+  let userTests = JSON.parse(localStorage.getItem("userTests")) || [];
 
-  let quizData = JSON.parse(localStorage.getItem("userTests")) || [];
-  quizData.sort((a, b) => b.score - a.score);
+  // Flatten the test data to focus on the latest score per user
+  userTests = userTests.map(user => ({
+    email: user.email,
+    username: user.username,
+    score: user.tests[user.tests.length - 1]?.score || 0  // Latest test score
+  }));
 
-  let rank = 1;
-  const rankedQuizData = quizData.map((item, index) => {
-    return { ...item, rank: index + 1 };
+  // Sort in descending order by score
+  userTests.sort((a, b) => b.score - a.score);
+
+  // Assign ranks
+  userTests.forEach((user, index) => {
+    user.rank = index + 1;
   });
 
-  // Save the ranked quiz data back into localStorage
-  localStorage.setItem("userTests", JSON.stringify(rankedQuizData));
-  return rankedQuizData;
+  return userTests;
 }
 
 
@@ -856,45 +782,86 @@ function displayLeaderboard() {
   const rankScore = document.getElementById("rank-score");
   rankScore.textContent = `Your score is: ${loggedInUserScore}`;
 
-  // 1st Ranker
-  const firstRankerScore = userTests[0].score;
-  const firstRankerUserName = userTests[0].username;
+  // // 1st Ranker
+  // const firstRankerScore = userTests[0].score;
+  // const firstRankerUserName = userTests[0].username;
 
+  // const first = document.getElementById("first");
+  // const firstName = document.getElementById("firstName");
+
+  // first.textContent = firstRankerScore;
+  // firstName.textContent = firstRankerUserName;
+
+  // // 2nd Ranker
+  // const secondRankerScore = userTests[1].score;
+  // const secondRankerUserName = userTests[1].username;
+
+  // const second = document.getElementById("second");
+  // const secondName = document.getElementById("secondName");
+
+  // second.textContent = secondRankerScore;
+  // secondName.textContent = secondRankerUserName
+  // // 3rd Ranker
+  // const thirdRankerScore = userTests[2].score;
+  // const thirdRankerUserName = userTests[2].username;
+  // const third = document.getElementById("third");
+  // const thirdName = document.getElementById("thirdName");
+  // third.textContent = thirdRankerScore;
+  // thirdName.textContent = thirdRankerUserName
+
+  // 1st Ranker
+if (userTests[0]) {
   const first = document.getElementById("first");
   const firstName = document.getElementById("firstName");
+  first.textContent = userTests[0].score;
+  firstName.textContent = userTests[0].username;
+}
 
-  first.textContent = firstRankerScore;
-  firstName.textContent = firstRankerUserName;
-
-  // 2nd Ranker
-  const secondRankerScore = userTests[1].score;
-  const secondRankerUserName = userTests[1].username;
-
+// 2nd Ranker
+if (userTests[1]) {
   const second = document.getElementById("second");
   const secondName = document.getElementById("secondName");
+  second.textContent = userTests[1].score;
+  secondName.textContent = userTests[1].username;
+}
 
-  second.textContent = secondRankerScore;
-  secondName.textContent = secondRankerUserName
-  // 3rd Ranker
-  const thirdRankerScore = userTests[2].score;
-  const thirdRankerUserName = userTests[2].username;
+// 3rd Ranker
+if (userTests[2]) {
   const third = document.getElementById("third");
   const thirdName = document.getElementById("thirdName");
-  third.textContent = thirdRankerScore;
-  thirdName.textContent = thirdRankerUserName
+  third.textContent = userTests[2].score;
+  thirdName.textContent = userTests[2].username;
+}
 
-  if (loggedInUserRank > 3) {
+
+  // if (loggedInUserRank > 3) {
+  //   const loggedInUserDiv = document.querySelector(".logged-in-user");
+  //   loggedInUserDiv.style.display = "flex"; 
+
+  //   const currentUserRankDiv = document.querySelector(".current-user-rank");
+  //   const currentUserNameDiv = document.querySelector(".current-user-name");
+  //   const currentUserScoreDiv = document.querySelector(".current-user-score");
+
+  //   currentUserRankDiv.textContent = `#${loggedInUserRank}`;
+  //   currentUserNameDiv.textContent = loggedInUserName;
+  //   currentUserScoreDiv.textContent = loggedInUserScore;
+  // }
+  if (loggedInUserRank <= 3) {
+    const loggedInUserDiv = document.querySelector(".logged-in-user");
+    loggedInUserDiv.style.display = "none";  // Hide if user is in top 3
+  } else {
     const loggedInUserDiv = document.querySelector(".logged-in-user");
     loggedInUserDiv.style.display = "flex"; 
-
+  
     const currentUserRankDiv = document.querySelector(".current-user-rank");
     const currentUserNameDiv = document.querySelector(".current-user-name");
     const currentUserScoreDiv = document.querySelector(".current-user-score");
-
+  
     currentUserRankDiv.textContent = `#${loggedInUserRank}`;
     currentUserNameDiv.textContent = loggedInUserName;
     currentUserScoreDiv.textContent = loggedInUserScore;
   }
+  
 
   // Now display other users from rank 4 onwards
   let htmlContent = '';
@@ -917,5 +884,3 @@ function displayLeaderboard() {
   }
   otherUsersContainer.innerHTML = htmlContent;
 }
-
-
