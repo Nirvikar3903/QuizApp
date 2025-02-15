@@ -3,9 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Panel - Dashboard</title>
     <link rel="stylesheet" href="/Admin/style/style1.css">
-    <script src="https://kit.fontawesome.com/18c32a2ab0.js" crossorigin="anonymous"></script>
+    <title>Document</title>
 </head>
 <body style="background-color: #F5F5F5;">
     <div class="navbar">
@@ -22,7 +21,7 @@
         </div>
         <div class="popup-container hidden" id="popup-container">
             <div class="popup">
-                <img src="/Images/admin-profile.png" alt="" srcset="">
+                <img src="/assets/rank_image2.png" alt="" srcset="" class="profile-photo">
                 <p id="admin-name">Admin</p>
                 <p id="admin-email">admin@gmail.com</p>
                 <p><button id="logout-button">Logout</button></p>
@@ -37,15 +36,15 @@
                 <div class="menu-items">
                     <div class = "home">
                         <i class="fa-solid fa-house"></i>
-                        <a href="dashboard.html">Home</a>
+                        <a href="dashboard.html" >Home</a>
                     </div>
-                    <div class = "users">
+                    <div class = "users" style="color:#F3BD00">
                         <i class="fa-solid fa-user"></i>
-                        <a href="users.html">Users</a>
+                        <a href="users.html"style="color:#F3BD00">Users</a>
                     </div>
-                    <div class = "quizzes" style="color:#F3BD00">
+                    <div class = "quizzes">
                         <i class="fa-solid fa-question"></i>
-                        <a href="quizzes.html" style="color:#F3BD00">Quizzes</a>
+                        <a href="quizzes.html">Quizzes</a>
                     </div>
                 </div>
             </div>
@@ -53,12 +52,24 @@
 
         <section id="right-section">
             <div class="right-section-container">
-                <h1>MCQ Question List</h1>
-                <hr>
+                <div class="identity"></div>
+                <hr style="font-weight: bold;">
+                <br>
+           <table id="user-test-details-table">
+            <thead>
+              <tr>
+                <th>Test No</th>
+                <th>Test Date</th>
+                <th>Score</th>
+                <th>Correct Ans</th>
+                <th>View Test</th>
+              </tr>
+            </thead>
+            <tbody>
+               <!-- User test data data will be inserted here dynamically  -->
+            </tbody>
+          </table> 
 
-                <div class="new-question-button">
-                    <button id="new-question">Add New Question</button>
-                </div>
             </div>
         </section>
     </div>

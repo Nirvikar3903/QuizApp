@@ -607,20 +607,16 @@ function prevBtn() {
 }
 
 function nextQuestion() {
-  // nextBtn.addEventListener("click", () => {
   const selectedOption = document.querySelector(
     'input[name="options"]:checked'
   );
   const loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
-
-  //check if the answer is selected
   if (!selectedOption) {
     alert("Please select an answer before moving to next question");
     return;
   }
   saveSelectedAnswer();
 
-  //move to next question
   if (currIndex < totalQuestions - 1) {
     currIndex++;
     displayQuestion();
@@ -641,9 +637,6 @@ function nextQuestion() {
 
 
 
-
-
-
     let userTests = JSON.parse(localStorage.getItem("userTests")) || [];
 
     // Check if the user has given tests before
@@ -653,22 +646,38 @@ function nextQuestion() {
       // User exists, increment the number of tests
       existingUser.noOfTests += 1;
       
+      const totalNoOfCorrectAns = randomQuestion.reduce((acc , question , index)=>{
+        if(selectedAnswer[indes] === question.answer){
+          acc+=1;
+        }
+        return acc
+      },0);
       // Add the new test data to their existing test history
       existingUser.tests.push({
         score: finalScore,
-        date: new Date().toLocaleString(),
+        date: new Date().toISOString().split('T')[0],
         questionsAnswered: randomQuestion.map((question, index) => ({
           question: question.question,
-          selectedAnswer: selectedAnswer[index],  // Store selected answer ID
-          correctAnswer: question.answer,         // Store correct answer ID
+          selectedAnswer: selectedAnswer[index],  
+          correctAnswer: question.answer,         
           options: question.options.reduce((acc, option) => {
-            acc[option.id] = option.value;        // Store options as key-value
+            acc[option.id] = option.value;        
             return acc;
           }, {})
-        }))
+        })),
+        totalNoOfCorrectAnswers: totalNoOfCorrectAnswers // Add totalNoOfCorrectAnswers
       });
     } else {
       // First test for this user, create new user entry
+
+      const totalNoOfCorrectAnswers = randomQuestion.reduce((acc, question, index) => {
+        if (selectedAnswer[index] === question.answer) {
+          acc += 1; // Increment for correct answers
+        }
+        return acc;
+      }, 0);
+
+
       const userTestData = {
         username: loggedInUser.username,
         email: loggedInUser.email,
@@ -685,7 +694,8 @@ function nextQuestion() {
                 acc[option.id] = option.value;
                 return acc;
               }, {})
-            }))
+            })),
+            totalNoOfCorrectAnswers: totalNoOfCorrectAnswers
           }
         ]
       };
@@ -709,20 +719,6 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 
-// function sortAndRank() {
-
-//   let quizData = JSON.parse(localStorage.getItem("userTests")) || [];
-//   quizData.sort((a, b) => b.score - a.score);
-
-//   let rank = 1;
-//   const rankedQuizData = quizData.map((item, index) => {
-//     return { ...item, rank: index + 1 };
-//   });
-
-//   // Save the ranked quiz data back into localStorage
-//   localStorage.setItem("userTests", JSON.stringify(rankedQuizData));
-//   return rankedQuizData;
-// }
 function sortAndRank() {
   let userTests = JSON.parse(localStorage.getItem("userTests")) || [];
 
@@ -743,8 +739,6 @@ function sortAndRank() {
 
   return userTests;
 }
-
-
 
 
 function displayLeaderboard() {
@@ -782,32 +776,6 @@ function displayLeaderboard() {
   const rankScore = document.getElementById("rank-score");
   rankScore.textContent = `Your score is: ${loggedInUserScore}`;
 
-  // // 1st Ranker
-  // const firstRankerScore = userTests[0].score;
-  // const firstRankerUserName = userTests[0].username;
-
-  // const first = document.getElementById("first");
-  // const firstName = document.getElementById("firstName");
-
-  // first.textContent = firstRankerScore;
-  // firstName.textContent = firstRankerUserName;
-
-  // // 2nd Ranker
-  // const secondRankerScore = userTests[1].score;
-  // const secondRankerUserName = userTests[1].username;
-
-  // const second = document.getElementById("second");
-  // const secondName = document.getElementById("secondName");
-
-  // second.textContent = secondRankerScore;
-  // secondName.textContent = secondRankerUserName
-  // // 3rd Ranker
-  // const thirdRankerScore = userTests[2].score;
-  // const thirdRankerUserName = userTests[2].username;
-  // const third = document.getElementById("third");
-  // const thirdName = document.getElementById("thirdName");
-  // third.textContent = thirdRankerScore;
-  // thirdName.textContent = thirdRankerUserName
 
   // 1st Ranker
 if (userTests[0]) {
@@ -834,18 +802,6 @@ if (userTests[2]) {
 }
 
 
-  // if (loggedInUserRank > 3) {
-  //   const loggedInUserDiv = document.querySelector(".logged-in-user");
-  //   loggedInUserDiv.style.display = "flex"; 
-
-  //   const currentUserRankDiv = document.querySelector(".current-user-rank");
-  //   const currentUserNameDiv = document.querySelector(".current-user-name");
-  //   const currentUserScoreDiv = document.querySelector(".current-user-score");
-
-  //   currentUserRankDiv.textContent = `#${loggedInUserRank}`;
-  //   currentUserNameDiv.textContent = loggedInUserName;
-  //   currentUserScoreDiv.textContent = loggedInUserScore;
-  // }
   if (loggedInUserRank <= 3) {
     const loggedInUserDiv = document.querySelector(".logged-in-user");
     loggedInUserDiv.style.display = "none";  // Hide if user is in top 3

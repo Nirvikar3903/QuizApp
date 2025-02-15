@@ -1,25 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/Admin/style/style1.css">
     <title>Document</title>
 </head>
+
 <body style="background-color: #F5F5F5;">
     <div class="navbar">
         <div class="logo">
-            <img src="/Images/techoaathshala_logo.png" alt="" srcset="">
+            <img src="/assets/techpathshala.png" alt="" srcset="">
 
             <div class="menu-icon" id="menu-toggle">
                 <i class="fa-solid fa-bars"></i> <!-- Hamburger Icon -->
             </div>
         </div>
         <div class="profile">
-            <p class = "admin">Admin</p>
-            <img src="/Images/admin-profile.png" alt="" srcset="" class="profile-photo">
+            <p class="admin">Admin</p>
+            <img src="/assets/rank_image2.png" alt="" srcset="" class="profile-photo">
         </div>
-        <div class="popup-container" id="popup-container">
+        <div class="popup-container hidden" id="popup-container">
             <div class="popup">
                 <img src="/Images/admin-profile.png" alt="" srcset="">
                 <p id="admin-name">Admin</p>
@@ -32,17 +34,17 @@
         <section id="side-navbar">
             <div class="navbar-container">
                 <span id="menu-heading">MENU</span>
-    
+
                 <div class="menu-items">
-                    <div class = "home">
+                    <div class="home">
                         <i class="fa-solid fa-house"></i>
-                        <a href="dashboard.html" >Home</a>
+                        <a href="dashboard.html">Home</a>
                     </div>
-                    <div class = "users" style="color:#F3BD00">
+                    <div class="users" style="color:#F3BD00">
                         <i class="fa-solid fa-user"></i>
-                        <a href="users.html"style="color:#F3BD00">Users</a>
+                        <a href="users.html" style="color:#F3BD00">Users</a>
                     </div>
-                    <div class = "quizzes">
+                    <div class="quizzes">
                         <i class="fa-solid fa-question"></i>
                         <a href="quizzes.html">Quizzes</a>
                     </div>
@@ -51,26 +53,34 @@
         </section>
 
         <section id="right-section">
-            <div class="identity"></div>
-           <table id="userTestTable">
-            <thead>
-              <tr>
-                <th>Test No</th>
-                <th>Test Date</th>
-                <th>Score</th>
-                <th>Correct Ans</th>
-                <th>View Test</th>
-              </tr>
-            </thead>
-            <tbody>
-               <!-- User test data data will be inserted here dynamically  -->
-            </tbody>
-          </table> 
-        </section>
+            <div class="right-section-container scroll">
+                <div class="identity"></div>
+                <hr style="font-weight: bold;">
+                <br>
+
+                <div id="testDetails">
+                    <div class="users-test-section">
+                        <h3 class="tests-data">
+                            <span id="test-number"></span>
+                            <span id="test-score"></span>
+                            <span id="test-date"></span>
+                            <!-- <span id="test-time"></span> -->
+                        </h3>
+                        <br>
+                        <div class="user-test" id="user-test-data"></div>
+                    </div>
+                </div>
+            </div>
+
     </div>
-    
+
+
+    </section>
+    </div>
+
 
 
     <script src="/Admin/script/scriptAdmin.js"></script>
 </body>
+
 </html>
