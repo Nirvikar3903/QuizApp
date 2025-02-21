@@ -157,62 +157,245 @@ button {
 }
 
 #user-test-details-table th {
-  height: 40px;
+  /* height: 40px; */
   background-color: #f7f9fd;
 }
 
 
+/* /Quiz Page/ */
+.right-section-container{
+    margin-top: 10px;
+    margin-left: 15px;
+    margin-right: 15px;
+    width:100%;
+    height:100%;
+    background-color: #FFFF;
+    border-radius: 10px;
+    padding-top: 30px;
+    padding-left: 20px;
+    padding-right: 20px;
+    box-sizing: border-box;
+    /* scrollbar-width: none; */
+    overflow-y: auto;
+}
+.right-section-container hr{
+    margin-top: 10px;
+    color: #8E8E93;
+}
+
+.new-question-button{
+    margin-top: 10px;
+    text-align: right;
+}
+
+#new-question{
+    font-size: 18px;
+    width: 200px;
+    height: 40px;
+    border-radius: 5px;
+    background-color:#4BAF4F;
+    border: none;
+    color: #FFFF;
+}
+
+/* #questions-table{ */
+.quiz-table{
+    width:100%;
+    /* text-align: center; */
+    /* border: 1px solid black; */
+    margin-top: 20px;
+    border-collapse: collapse;
+    box-sizing: border-box;
+    /* padding: 10px; */
+
+}
 
 
+/* #questions-table td, th{ */
+.quiz-table td,th{
+    border: 1px solid #EAEAEA;
+    padding: 0;
+    padding: 10px;
+    box-sizing: border-box;
+    padding-left: 20px; 
+}
+/* #questions-table th{ */
+.quiz-table th{
+    height:40px;
+    background-color: #F7F9FD;
+}
 
-/*Quiz Page*/
-.right-section-container {
+.index{
+    width:8%;
+    text-align: center;
+}
+
+.icons{
+    width:15%;
+}
+#question-table-container i{
+    margin-right: 10px;
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+
+/* /Create Question Popup, View Question Popup/ */
+/* .create-question-popup,  */
+.view-question-popup,
+.edit-question-popup{
+    background-color: #EAEAEA;
+    padding: 20px;
+    border-radius: 8px;
+    font-size: 20px;
+    width:60%;
+    height:90vh;
+    position: absolute;
+    top:10px;
+    left:350px;
+    box-shadow: 0 15px 15px rgba(0, 0, 0, 0.3);
+    overflow-x: auto;
+    scrollbar-width: none;
+    display: none; 
+}
+
+.create-question-popup{
+  background-color: #EAEAEA;
+  padding: 20px;
+  border-radius: 8px;
+  font-size: 20px;
+  width:60%;
+  height:90vh;
+  position: absolute;
+  top:10px;
+  left:350px;
+  box-shadow: 0 15px 15px rgba(0, 0, 0, 0.3);
+  overflow-x: auto;
+  scrollbar-width: none;
+  display: none; 
+
+}
+
+.question-container{
+    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.3);
+    margin-top: 20px;
+    background-color: #FFFF;
+    display: flex;
+    flex-direction: column;
+    border-radius: 8px;
+    padding: 20px;
+    /* gap:20px */
+}
+
+.question-container input[type=text], select{
+    height: 45px;
+    border-radius: 5px;
+    padding: 10px;
+    box-sizing: border-box;
+    /* width:800px; */
+    margin-bottom: 20px;
+    margin-top: 10px;
+    font-size: 18px;
+}
+
+.question-container option{
+    font-size: 20px;
+}
+.option-heading{
+    display: flex;
+    justify-content: space-between;
+}
+.cross,
+.crossed{
+    cursor: pointer;
+}
+#required{
+    color: red;
+}
+.submit-button{
+    display: flex;
+    /* align-items: center; */
+    justify-content: center;
+}
+#add-new-question,
+#edit-btn{
+    background-color: #0d6efd;
+    color: white;
+    font-size: 18px;
+    border-radius: 5px;
+    border: none;
+    padding:10px;
+    width:100px;
+    margin-top: 20px;
+}
+
+.question-container p{
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+.hidden{
+    display: none;
+}
+
+.deletion-popup{
+ display: none;   
+ flex-direction: column; 
+ position: absolute;
+ top:200px;
+ left:500px;
+ background-color: #FFFF;
+ width:700px;
+ height:400px;
+ align-items: center;
+ /* display: flex; */
+ box-shadow: 0 5px 5px rgba(0, 0, 0, 0.7);
+ border-radius: 8px;
+ gap:20px;
+}
+
+.deletion-popup img{
+    width:150px;
+}
+
+.deletion-popup div{
+  /* align-items: center; */
   margin-top: 20px;
-  margin-left: 15px;
-  margin-right: 15px;
-  width: 100%;
-  height: 100%;
-  background-color: #ffff;
-  border-radius: 10px;
-  padding-top: 30px;
-  padding-left: 20px;
-  padding-right: 20px;
-  box-sizing: border-box;
-}
-.right-section-container hr {
-  margin-top: 10px;
-  color: #8e8e93;
 }
 
-.new-question-button {
-  margin-top: 10px;
-  text-align: right;
+.deletion-popup button{
+    font-size: 18px;
+    width:100px;
+    height: 25px; 
+    padding: 8px;
+    color: #FFFF;
+    border: none;
+
+}
+.buttons-dc{
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  gap: 25px;
 }
 
-#new-question {
+#delete{
+    font-size: 18px;
+    background-color: #085fe2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+    border-radius: 6px;
+}
+
+#cancel{
   font-size: 18px;
-  width: 200px;
+  background-color: green; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
   height: 40px;
-  border-radius: 5px;
-  background-color: rgb(2, 188, 2);
-  border: none;
-  color: #ffff;
-}
-
-table {
-  width: 100%;
-  height: auto;
-  text-align: center;
-  border: 1px solid #eaeaea;
-  border-collapse: collapse;
-  /* background-color:goldenrod; */
-}
-
-tr,
-td {
-  /* border: 1px solid black; */
-  padding: 8px;
-  border-collapse: collapse;
+  border-radius: 6px;
 }
 
 
@@ -220,6 +403,14 @@ td {
 
 
 /* * Question Card * */
+
+#test-header{
+  background-color: #f7f9fd;
+
+  
+}
+
+
 .question-card {
   background: white;
   border-radius: 10px;
@@ -231,23 +422,33 @@ td {
 
 .question-title {
   font-weight: bold;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
 }
 
 /* Options Layout  */
 .options-container {
   display: flex;
-  flex-direction: column; /* Stack options vertically */
+  flex-direction: column; /*Stack options vertically*/
   gap: 9px; /* Add space between options */
 }
+
+.bind-together {
+  display: flex;
+  align-items: center; /* Align text and option vertically */
+  gap: 10px; /* Space between "Option X" and the actual option */
+}
+
+
 
 .option {
   display: flex;
   text-align: start;
+  align-items: center;
   padding: 10px;
   border-radius: 5px;
   background: #f5f5f5;
-  width: 98%; /* Ensures full width */
+  width: 97%; /* Ensures full width */
+  gap: 20px
 }
 
 .correct {
@@ -260,18 +461,12 @@ td {
   color: #721c24;
 }
 
-.icon {
-  font-weight: bold;
-  font-size: 18px;
-  margin-left: 10px;
-  color: inherit;
-}
-
-/* Prevents HTML tags from breaking */
-.option span {
-  white-space: nowrap;
-}
 .correct-answer {
   background-color: #d8b8e3; /* Light purple background */
   border: 1px solid #a77ab8; /* Optionally, add a border for more emphasis */
+}
+
+.icon {
+  font-weight: bold;
+  margin-left: 5px;
 }

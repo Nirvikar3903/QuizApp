@@ -101,6 +101,76 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 
+// document.addEventListener("DOMContentLoaded", () => {
+//   const emailInput = document.getElementById("email");
+//   const passwordInput = document.getElementById("password");
+//   const loginButton = document.getElementById("login-btn");
+
+//   const emailErr = document.getElementById("email-err");
+//   const passwordErr = document.getElementById("password-err");
+
+//   // Function to validate email
+//   const isValidEmail = (email) => {
+//     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+//     return emailRegex.test(email);
+//   };
+
+//   window.login = function () {
+//     emailErr.textContent = "";
+//     passwordErr.textContent = "";
+
+//     let isValid = true;
+
+
+
+//     // Validate email
+//     if (emailInput.value.trim() === "") {
+//       emailErr.textContent = "Email is required";
+//       isValid = false;
+//     } else if (!isValidEmail(emailInput.value.trim())) {
+//       emailErr.textContent = "Please enter a valid Email !!";
+//       isValid = false;
+//     }
+
+//     // Validate password
+//     if (passwordInput.value.trim() === "") {
+//       passwordErr.textContent = "Password is required !!";
+//       isValid = false;
+//     }
+
+//     // If everything looks good, proceed to check for matching user
+//     if (isValid) {
+//       const users = JSON.parse(localStorage.getItem("users")) || [];
+
+//       // Find user matching email and password
+//       const user = users.find(
+//         (u) =>
+//           u.email === emailInput.value.trim() &&
+//           u.password === passwordInput.value.trim()
+//       );
+
+//       // Check if email or password is incorrect and show errors separately
+//       if (!user) {
+//         if (!users.some(u => u.email === emailInput.value.trim())) {
+//           emailErr.textContent = "Incorrect email address. Please try again!";
+//         }
+//         if (!users.some(u => u.password === passwordInput.value.trim())) {
+//           passwordErr.textContent = "Incorrect password. Please try again!";
+//         }
+//       } else {
+//         const loggedInUser = {
+//           username: user.username,
+//           email: user.email,
+//         };
+//         localStorage.setItem("loggedInUser", JSON.stringify(loggedInUser));
+
+//         alert(`Welcome ${user.username}! Login successful!`);
+//         window.location.href = "startQuizPage.html";
+//       }
+//     }
+//   };
+// });
+
 document.addEventListener("DOMContentLoaded", () => {
   const emailInput = document.getElementById("email");
   const passwordInput = document.getElementById("password");
@@ -119,52 +189,58 @@ document.addEventListener("DOMContentLoaded", () => {
     emailErr.textContent = "";
     passwordErr.textContent = "";
 
+    let email = emailInput.value.trim();
+    let password = passwordInput.value.trim();
     let isValid = true;
 
+    // Admin login check (Priority)
+    if (email === "admin@gmail.com" && password === "admin") {
+      alert("Admin Login Successful");
+      window.location.href = "./Admin Panel/dashboard.html";
+      return;
+    }
+
     // Validate email
-    if (emailInput.value.trim() === "") {
+    if (email === "") {
       emailErr.textContent = "Email is required";
       isValid = false;
-    } else if (!isValidEmail(emailInput.value.trim())) {
+    } else if (!isValidEmail(email)) {
       emailErr.textContent = "Please enter a valid Email !!";
       isValid = false;
     }
 
     // Validate password
-    if (passwordInput.value.trim() === "") {
+    if (password === "") {
       passwordErr.textContent = "Password is required !!";
       isValid = false;
     }
 
-    // If everything looks good, proceed to check for matching user
-    if (isValid) {
-      const users = JSON.parse(localStorage.getItem("users")) || [];
+    // If validation fails, return early
+    if (!isValid) return;
 
-      // Find user matching email and password
-      const user = users.find(
-        (u) =>
-          u.email === emailInput.value.trim() &&
-          u.password === passwordInput.value.trim()
-      );
+    // Fetch users from localStorage
+    const users = JSON.parse(localStorage.getItem("users")) || [];
 
-      // Check if email or password is incorrect and show errors separately
-      if (!user) {
-        if (!users.some(u => u.email === emailInput.value.trim())) {
-          emailErr.textContent = "Incorrect email address. Please try again!";
-        }
-        if (!users.some(u => u.password === passwordInput.value.trim())) {
-          passwordErr.textContent = "Incorrect password. Please try again!";
-        }
-      } else {
-        const loggedInUser = {
-          username: user.username,
-          email: user.email,
-        };
-        localStorage.setItem("loggedInUser", JSON.stringify(loggedInUser));
+    // Find user matching email and password
+    const user = users.find((u) => u.email === email && u.password === password);
 
-        alert(`Welcome ${user.username}! Login successful!`);
-        window.location.href = "startQuizPage.html";
+    if (!user) {
+      // Check if email exists but password is incorrect
+      if (!users.some((u) => u.email === email)) {
+        emailErr.textContent = "Incorrect email address. Please try again!";
       }
+      if (!users.some((u) => u.password === password)) {
+        passwordErr.textContent = "Incorrect password. Please try again!";
+      }
+    } else {
+      const loggedInUser = {
+        username: user.username,
+        email: user.email,
+      };
+      localStorage.setItem("loggedInUser", JSON.stringify(loggedInUser));
+
+      alert(`Welcome ${user.username}! Login successful!`);
+      window.location.href = "startQuizPage.html";
     }
   };
 });
