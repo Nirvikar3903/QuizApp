@@ -3,9 +3,6 @@ const hamburger = document.getElementById("menu-toggle");
 const home = document.getElementById("home");
 const users = document.querySelector(".users");
 const quizzes = document.querySelector(".quizzes");
-const profilePhoto = document.querySelector(".profile-photo");
-const popupContainer = document.getElementById("popup-container");
-const logoutBtn = document.getElementById("logout-button");
 
 hamburger.addEventListener("click", function () {
   if (sideBar.style.display === "none") {
@@ -18,27 +15,28 @@ hamburger.addEventListener("click", function () {
 
 /*********************************** adminlogin *******************************/
 function logout() {
-  window.location.href = "../index.html";
+  window.location.href ='/index.html';
 }
+
 document.addEventListener("DOMContentLoaded", () => {
-  const profilePhoto = document.querySelector('.profile-photo');
+  const profileIcon  = document.querySelector('.profile-icon');
   const popupContainer = document.getElementById('popup-container');
   const logoutBtn = document.getElementById('logout-button');
 
-  // Hide the popup container initially using its class
-  popupContainer.classList.add('hidden');
 
-  profilePhoto.addEventListener('click', () => {
-    popupContainer.classList.toggle('hidden');
-  });
+  if (profileIcon) {
+    profileIcon.addEventListener("click", function () {
+      popupContainer.classList.toggle("hidden"); // Show/Hide popup
+    });
+  }
 
-  logoutBtn.addEventListener('click', () => {
-    popupContainer.classList.add('hidden');
-    logout();
-  })
-
-})
-
+  if (logoutBtn) {
+    logoutBtn.addEventListener("click", function () {
+      alert("Logged out successfully!");
+      logout();
+    });
+  }
+});
 
 
 
@@ -88,7 +86,7 @@ function displayAllQuestions() {
   let tableBody = document.getElementById("question-table-container");
   tableBody.innerHTML = ""; // Clear existing content
 
-  questions.slice(0, 21).forEach((question, index) => {
+  questions.forEach((question, index) => {  
     let row = document.createElement("tr");
 
     row.innerHTML = `
@@ -148,7 +146,7 @@ function closePopup() {
   document.querySelector(".view-question-popup").style.display = "none";
 }
 // Adding event listener to close the popup when "X" is clicked
-document.querySelector(".cross").addEventListener("click", closePopup);
+document.querySelector(".cross-question-popup").addEventListener("click", closePopup);
 
 
 // ******************************* Edit Questions ********************************//
@@ -353,8 +351,8 @@ function closeCreateQuestionPopup() {
 }
 
 // Attach event listener for closing popup
-document.querySelector(".cross-delete").addEventListener("click", closeCreateQuestionPopup);
-document.getElementById("new-question").addEventListener("click" , showCreateQuestionPopup )
+document.querySelector(".cross-create-question").addEventListener("click", closeCreateQuestionPopup)
+document.getElementById("new-question").addEventListener("click" , showCreateQuestionPopup)
 
 // *******************************Display Users********************************//
 
@@ -420,7 +418,7 @@ function displayUsersTestDetails() {
         <td>${index + 1}</td>
         <td>${test.date}</td>
         <td>${test.score}</td>
-        <td>${test.correctAnswers}</td>
+        <td>${test.totalNoOfCorrectAnswers}</td>
         <td><a href="/Admin/userTests.html?email=${encodeURIComponent(
           user.email
         )}&testIndex=${index}" 
@@ -512,7 +510,7 @@ function displayUsersTests() {
 
     // **Create Table Cell for the Question Card**
     const questionCardCell = document.createElement("td");
-    questionCardCell.colSpan = 3; // Span all columns
+    questionCardCell.colSpan = 4; // Span all columns
 
     // **Create Question Card**
     const questionCard = document.createElement("div");

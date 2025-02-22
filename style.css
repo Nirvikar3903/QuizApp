@@ -28,6 +28,16 @@ input{
     border-color:1px solid #8E8E93;
 }
 
+#toggle-password {
+    position: relative;
+     left: 425px;
+     bottom: 50px; 
+    cursor: pointer;
+    font-size: 18px;
+    padding: 0;
+    margin: 0;
+}
+
 span{}
 .information>*{
    display: flex;

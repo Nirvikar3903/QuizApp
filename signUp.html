@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
+    <script src="https://kit.fontawesome.com/dc4ea0a9e3.js" crossorigin="anonymous"></script>
+
     <title>SignUp Page</title>
 </head>
 <body>
@@ -28,10 +30,12 @@
                     <span id="email-err" style="color: red;"></span>
                 </div>
                 <div class="information">
-                    <label for="password" >Password<span style="color: red;">*</span></label>
-                    <input type="password" id="password" placeholder="password" style="padding-left: 10px;">
-                    <span id="password-err" style="color: red;"></span>
+                    <label for="password">Password<span style="color: red;">*</span></label>
+                        <input type="password" id="password" placeholder="password" style="padding-left: 10px;">
+                        <span id="password-err" style="color: red;"></span>
+                        <span id="toggle-password" class="eye-icon" onclick="togglePassword()"><i class="fa-solid fa-eye"></i></span>
                 </div>
+        
             </form>
             <div class="termsAndConditions" > 
                 <!-- <input type="checkbox" style="margin: 0;padding: 0;">I accept <span style="color: #0948B4;">Terms & Conditions</span> -->

@@ -101,76 +101,6 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 
-// document.addEventListener("DOMContentLoaded", () => {
-//   const emailInput = document.getElementById("email");
-//   const passwordInput = document.getElementById("password");
-//   const loginButton = document.getElementById("login-btn");
-
-//   const emailErr = document.getElementById("email-err");
-//   const passwordErr = document.getElementById("password-err");
-
-//   // Function to validate email
-//   const isValidEmail = (email) => {
-//     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-//     return emailRegex.test(email);
-//   };
-
-//   window.login = function () {
-//     emailErr.textContent = "";
-//     passwordErr.textContent = "";
-
-//     let isValid = true;
-
-
-
-//     // Validate email
-//     if (emailInput.value.trim() === "") {
-//       emailErr.textContent = "Email is required";
-//       isValid = false;
-//     } else if (!isValidEmail(emailInput.value.trim())) {
-//       emailErr.textContent = "Please enter a valid Email !!";
-//       isValid = false;
-//     }
-
-//     // Validate password
-//     if (passwordInput.value.trim() === "") {
-//       passwordErr.textContent = "Password is required !!";
-//       isValid = false;
-//     }
-
-//     // If everything looks good, proceed to check for matching user
-//     if (isValid) {
-//       const users = JSON.parse(localStorage.getItem("users")) || [];
-
-//       // Find user matching email and password
-//       const user = users.find(
-//         (u) =>
-//           u.email === emailInput.value.trim() &&
-//           u.password === passwordInput.value.trim()
-//       );
-
-//       // Check if email or password is incorrect and show errors separately
-//       if (!user) {
-//         if (!users.some(u => u.email === emailInput.value.trim())) {
-//           emailErr.textContent = "Incorrect email address. Please try again!";
-//         }
-//         if (!users.some(u => u.password === passwordInput.value.trim())) {
-//           passwordErr.textContent = "Incorrect password. Please try again!";
-//         }
-//       } else {
-//         const loggedInUser = {
-//           username: user.username,
-//           email: user.email,
-//         };
-//         localStorage.setItem("loggedInUser", JSON.stringify(loggedInUser));
-
-//         alert(`Welcome ${user.username}! Login successful!`);
-//         window.location.href = "startQuizPage.html";
-//       }
-//     }
-//   };
-// });
-
 document.addEventListener("DOMContentLoaded", () => {
   const emailInput = document.getElementById("email");
   const passwordInput = document.getElementById("password");
@@ -184,6 +114,38 @@ document.addEventListener("DOMContentLoaded", () => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailRegex.test(email);
   };
+  // Add your other JavaScript code here
+
+// Toggle password visibility
+
+window.togglePassword = function() {
+  const passwordField = document.getElementById('password');
+  const toggleIcon = document.getElementById('toggle-password');
+  
+  if (passwordField.type === "password") {
+      passwordField.type = "text"; // Show the password
+      toggleIcon.innerHTML = '<i class="fa-solid fa-eye-slash"></i>'; // Change icon to closed-eye (showing text)
+  } else {
+      passwordField.type = "password"; // Hide the password
+      toggleIcon.innerHTML = '<i class="fa-solid fa-eye"></i>'; // Change icon to open-eye (showing password)
+  }
+}
+
+// window.togglePassword = function() {
+//   const passwordField = document.getElementById('password');
+//   const toggleIcon = document.getElementById('toggle-password');
+  
+//   if (passwordField.type === "password") {
+//       passwordField.type = "text"; // Show the password
+//       toggleIcon.innerHTML = <i class="fa-solid fa-eye-slash"></i>; 
+//   } else {
+//       passwordField.type = "password"; // Hide the password
+//       toggleIcon.innerHTML = <i class="fa-solid fa-eye"></i> ;
+//   }
+// }
+
+
+
 
   window.login = function () {
     emailErr.textContent = "";
@@ -193,10 +155,12 @@ document.addEventListener("DOMContentLoaded", () => {
     let password = passwordInput.value.trim();
     let isValid = true;
 
+    
+
     // Admin login check (Priority)
     if (email === "admin@gmail.com" && password === "admin") {
       alert("Admin Login Successful");
-      window.location.href = "./Admin Panel/dashboard.html";
+      window.location.href = '/Admin/dashboard.html';
       return;
     }
 
