@@ -60,7 +60,7 @@
   font-weight: 100px;
   color: #928d95;
   /* transition: transform 1s ease-in-out; */
-  transition: transform 1s ease-in-out, width 1s ease-in-out;
+  transition: 0.7s;
   /* left: -250px; */
 }
 

@@ -3,13 +3,21 @@ const hamburger = document.getElementById("menu-toggle");
 const home = document.getElementById("home");
 const users = document.querySelector(".users");
 const quizzes = document.querySelector(".quizzes");
+sideBar.style.width = "20%"
+
+
+
+sideBar.style.width = "20%"; // initially set the sidebar width to 20%
 
 hamburger.addEventListener("click", function () {
-  if (sideBar.style.display === "none") {
-    sideBar.style.display = "flex";
+  // Check if the sidebar width is 20%
+  if (sideBar.style.width === "20%") {
+    sideBar.style.width = "0%"; // close the sidebar
   } else {
-    sideBar.style.display = "none";
+    sideBar.style.width = "20%"; // open the sidebar
   }
+
+  // Add a 'spin' class to the hamburger
   hamburger.classList.toggle("spin");
 });
 
